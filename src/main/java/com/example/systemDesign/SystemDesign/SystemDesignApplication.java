@@ -16,7 +16,7 @@ public class SystemDesignApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SystemDesignApplication.class, args);
-		//runLiscovSubstitutionPrinciple();
+		runLiscovSubstitutionPrinciple();
 		runFactoryDesignPatterExample();
 
 	}
@@ -32,8 +32,6 @@ public class SystemDesignApplication {
 	public static void printDiscountedPrice(MenuItem menu){
 		//if getDiscounted not there in derived class than we can't able to replace menu with beverage
 		// here we violated Liscov substitution principle
-		//System.out.println(menu.getDiscountedPrice());
-		// to correct this we have implemented same function in dervied class also
 		System.out.println(menu.getDiscountedPrice());
 	}
 
