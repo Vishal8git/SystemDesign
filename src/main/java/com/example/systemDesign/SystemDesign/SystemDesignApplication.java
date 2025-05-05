@@ -1,5 +1,6 @@
 package com.example.systemDesign.SystemDesign;
 
+import com.example.systemDesign.SystemDesign.BuilderDesignPattern.UrlBuilder;
 import com.example.systemDesign.SystemDesign.FactoryDesignPattern.Course;
 import com.example.systemDesign.SystemDesign.FactoryDesignPattern.CourseFactory;
 import com.example.systemDesign.SystemDesign.Models.BeverageItem;
@@ -16,8 +17,9 @@ public class SystemDesignApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SystemDesignApplication.class, args);
-		runLiscovSubstitutionPrinciple();
-		runFactoryDesignPatterExample();
+		//runLiscovSubstitutionPrinciple();
+		//runFactoryDesignPatterExample();
+		runBuilderDesignPatternExample();
 
 	}
 
@@ -40,6 +42,19 @@ public class SystemDesignApplication {
 		Course lldCourse = CourseFactory.getCourse("LLD");
 		System.out.println(hldCourse.getModules());
 		System.out.println(lldCourse.getModules());
+	}
+
+	public static void runBuilderDesignPatternExample(){
+		UrlBuilder.Builder url = new UrlBuilder.Builder();
+		url.protocol("https://")
+				.hostName("localhost:")
+				.pathParams("/cities")
+				.queryParams("?india");
+		UrlBuilder urlBuilder = url.build();
+		System.out.print(urlBuilder.protocol);
+		System.out.print(urlBuilder.hostName);
+		System.out.print(urlBuilder.pathParams);
+		System.out.print(urlBuilder.queryParams);
 	}
 
 
