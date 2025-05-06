@@ -1,5 +1,7 @@
 package com.example.systemDesign.SystemDesign;
 
+import com.example.systemDesign.SystemDesign.AbstractFactoryDesignPattern.AdmitCard;
+import com.example.systemDesign.SystemDesign.AbstractFactoryDesignPattern.UniversityFactory;
 import com.example.systemDesign.SystemDesign.BuilderDesignPattern.UrlBuilder;
 import com.example.systemDesign.SystemDesign.FactoryDesignPattern.Course;
 import com.example.systemDesign.SystemDesign.FactoryDesignPattern.CourseFactory;
@@ -17,9 +19,10 @@ public class SystemDesignApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SystemDesignApplication.class, args);
-		//runLiscovSubstitutionPrinciple();
-		//runFactoryDesignPatterExample();
+		runLiscovSubstitutionPrinciple();
+		runFactoryDesignPatterExample();
 		runBuilderDesignPatternExample();
+		runAbstractFactoryMethodDesignPatter();
 
 	}
 
@@ -55,6 +58,17 @@ public class SystemDesignApplication {
 		System.out.print(urlBuilder.hostName);
 		System.out.print(urlBuilder.pathParams);
 		System.out.print(urlBuilder.queryParams);
+	}
+
+	public static void runAbstractFactoryMethodDesignPatter(){
+		int score = 125;
+		UniversityFactory university = UniversityFactory.getUniversityFactory(score);
+		AdmitCard admitCard = university.getAdmitCard("Math");
+		System.out.println(admitCard);
+		int score1 = 108;
+		UniversityFactory university1 = UniversityFactory.getUniversityFactory(score1);
+		AdmitCard admitCard1 = university1.getAdmitCard("Math");
+		System.out.println(admitCard1);
 	}
 
 
