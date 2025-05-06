@@ -7,6 +7,7 @@ import com.example.systemDesign.SystemDesign.FactoryDesignPattern.Course;
 import com.example.systemDesign.SystemDesign.FactoryDesignPattern.CourseFactory;
 import com.example.systemDesign.SystemDesign.Models.BeverageItem;
 import com.example.systemDesign.SystemDesign.Models.MenuItem;
+import com.example.systemDesign.SystemDesign.SingletonDesignPattern.LoggerSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +24,7 @@ public class SystemDesignApplication {
 		runFactoryDesignPatterExample();
 		runBuilderDesignPatternExample();
 		runAbstractFactoryMethodDesignPatter();
+		runSingletonDesignPattern();
 
 	}
 
@@ -69,6 +71,13 @@ public class SystemDesignApplication {
 		UniversityFactory university1 = UniversityFactory.getUniversityFactory(score1);
 		AdmitCard admitCard1 = university1.getAdmitCard("Math");
 		System.out.println(admitCard1);
+	}
+
+	public static void runSingletonDesignPattern(){
+		LoggerSingleton instance = LoggerSingleton.getInstance();
+		LoggerSingleton instance1 = LoggerSingleton.getInstance();
+		System.out.println(instance);
+		System.out.println(instance1);
 	}
 
 
