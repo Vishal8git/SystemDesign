@@ -6,6 +6,8 @@ import com.example.systemDesign.SystemDesign.AdapterDesignPattern.StudentClient;
 import com.example.systemDesign.SystemDesign.BuilderDesignPattern.UrlBuilder;
 import com.example.systemDesign.SystemDesign.FactoryDesignPattern.Course;
 import com.example.systemDesign.SystemDesign.FactoryDesignPattern.CourseFactory;
+import com.example.systemDesign.SystemDesign.FlyweightDesignPattern.Ball;
+import com.example.systemDesign.SystemDesign.FlyweightDesignPattern.BallFactory;
 import com.example.systemDesign.SystemDesign.Models.BeverageItem;
 import com.example.systemDesign.SystemDesign.Models.MenuItem;
 import com.example.systemDesign.SystemDesign.SingletonDesignPattern.LoggerSingleton;
@@ -14,9 +16,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 @SpringBootApplication
 public class SystemDesignApplication {
+
+	private static final String colors[]  = {"green", "blue", "pink"};
+	private static final Map<String,String> urlMap = Map.ofEntries(
+			new AbstractMap.SimpleEntry<>("green", "url1"),
+			new AbstractMap.SimpleEntry<>("blue", "url2"),
+			new AbstractMap.SimpleEntry<>("pink", "url3")
+	);
+
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(SystemDesignApplication.class, args);
@@ -26,6 +39,7 @@ public class SystemDesignApplication {
 		runAbstractFactoryMethodDesignPatter();
 		runSingletonDesignPattern();
 		runAdapterDesignPattern();
+		runFlyweightDesignPatter();
 	}
 
 	public static void runLiscovSubstitutionPrinciple(){
@@ -84,4 +98,19 @@ public class SystemDesignApplication {
 		StudentClient studentClient = new StudentClient();
 		System.out.println(studentClient.getStudents());
 	}
+
+	public static void runFlyweightDesignPatter(){
+		for(int i=0;i<10;i++){
+
+			String color = colors[(int)(Math.random()*colors.length)];
+			String url = urlMap.get(color);
+			Ball ball = BallFactory.getBall(color,url);
+			ball.setxCordinate((int)Math.random()*50);
+			ball.setyCordinate((int)Math.random()*50);
+			ball.setRadius(75);
+			ball.draw();
+			System.out.println(ball.hashCode());
+		}
+	}
+
 }
